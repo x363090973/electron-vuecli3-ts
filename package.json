@@ -1,15 +1,17 @@
 {
   "name": "elctron-quickstart",
-  "version": "0.1.0",
-  "private": true,
+  "version": "v0.0.1",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve ",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "dev": "npm run electron:serve",
     "electron:build": "vue-cli-service electron:build",
     "electron:serve": "vue-cli-service electron:serve",
     "postinstall": "electron-builder install-app-deps",
-    "postuninstall": "electron-builder install-app-deps"
+    "postuninstall": "electron-builder install-app-deps",
+    "publish": "electron-builder --publish always"
   },
   "main": "background.js",
   "dependencies": {
@@ -21,8 +23,11 @@
     "vuex": "^3.0.1"
   },
   "repository": "github:user/repo",
+  "provider": "github",
   "win": {
-    "publish": ["github"]
+    "publish": [
+      "github"
+    ]
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
@@ -33,6 +38,7 @@
     "@vue/eslint-config-typescript": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "electron": "^5.0.0",
+    "electron-updater": "^4.0.6",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.9.0",

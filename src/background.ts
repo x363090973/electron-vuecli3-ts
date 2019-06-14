@@ -6,6 +6,9 @@ import {
   installVueDevtools
 } from 'vue-cli-plugin-electron-builder/lib'
 const isDevelopment = process.env.NODE_ENV !== 'production'
+const { autoUpdater } = require("electron-updater")
+
+console.log('autoUpdater',autoUpdater)
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -87,3 +90,12 @@ if (isDevelopment) {
     })
   }
 }
+
+
+app.on('ready', () => {
+  autoUpdater.checkForUpdates()
+})
+
+autoUpdater.on('update-downloaded', () => {
+  autoUpdater.quitAndInstall()
+})
